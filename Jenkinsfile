@@ -22,15 +22,16 @@ pipeline {
                 success {
                     emailext (
                     to:"nathan.nguyennhat@gmail.com",
-                    subject:"Success email from Jenkins",
+                    subject:"Success Unit Test from Jenkins",
                     body:"Test is completed",
                     attachLog: true
                     )
                 }
                 failure {
                     mail to:"nathan.nguyennhat@gmail.com",
-                    subject:"Failure email from Jenkins",
-                    body:"Test failed"
+                    subject:"Failure Unit Test from Jenkins",
+                    body:"Test failed",
+                    attachLog: true
                 }
             }
         }
@@ -39,9 +40,26 @@ pipeline {
                 echo "Checking  quality of the code using Codacy"
             }
         }
-        stage('Sercurity Scan') {
+        stage('Security Scan') {
             steps {
                 echo "Scanning vulnerabilities using Snyk"
+            }
+            post {
+
+                success {
+                    emailext (
+                    to:"nathan.nguyennhat@gmail.com",
+                    subject:"Success Security Test from Jenkins",
+                    body:" Security Test is completed",
+                    attachLog: true
+                    )
+                }
+                failure {
+                    mail to:"nathan.nguyennhat@gmail.com",
+                    subject:"Failure Security Test from Jenkins",
+                    body:"Security Test failed",
+                    attachLog: true
+                }
             }
         }
         stage('Intergration Testing') {

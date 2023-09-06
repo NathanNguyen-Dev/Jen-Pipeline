@@ -16,11 +16,9 @@ pipeline {
                 
             }
             post {
-                    always {
-                        script {
-                        // read and save the output text
-                         sh "curl ${BUILD_URL}/consoleText -o Textlogs.txt"
-                    }
+                always {
+                    sh "curl ${BUILD_URL}/consoleText -o Textlogs.txt"
+                    
                 }
                 success {
                     emailext to:"nathan.nguyennhat@gmail.com",

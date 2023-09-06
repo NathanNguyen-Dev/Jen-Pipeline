@@ -7,26 +7,18 @@ pipeline {
                 echo "Compile and build using Maven"
             }
         }
-        stage('Unit Testing') {
+        stage('Unit Test') {
             steps {
-                echo "Unit testing using PyTest"
+                echo "Unit testing using Selenium"
             }
             post {
                 success {
-                    // Send success email
                     mail to:"nathan.nguyennhat@gmail.com",
-                    subject:"Success email from Jenkins",
+                    subject:"Email from Jenkins",
                     body:"Test is completed"
-                    }
                 }
-                failure {
-                    // Send failure email
-                    mail to:"nathan.nguyennhat@gmail.com",
-                    subject:"Failure email from Jenkins",
-                    body:"Test is not completed"
-
-                }
-        }  
+            }
+        }
         stage('Code Quality Check') {
             steps {
                 echo "Checking  quality of the code using Codacy"

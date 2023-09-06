@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Unit Test') {
             steps {
-                echo "Unit testing using Selenium"
+                echo "Unit testing using PyTest"
             }
             post {
                 success {

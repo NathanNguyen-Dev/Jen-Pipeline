@@ -20,7 +20,7 @@ pipeline {
             }
             post {
                 always {
-                    sh "curl ${BUILD_URL}/consoleText -o Textlogs.txt"
+                    sh "cd ~.jenkins/jobs/${env.JOB_NAME}/builds/${BUILD_NUMBER}/"
                     sh "ls -la"
                 }
                 success {
@@ -28,7 +28,7 @@ pipeline {
                     to:"nathan.nguyennhat@gmail.com",
                     subject:"Success email from Jenkins",
                     body:"Test is completed",
-                    attachmentsPattern: 'Textlogs.txt'
+                    attachmentsPattern: 'log'
                     )
                 }
                 failure {

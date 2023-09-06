@@ -15,7 +15,7 @@ pipeline {
                     always {
                         script {
                         // Check the Jenkins log if needed
-                        sh 'tail -n 100 /var/log/jenkins/jenkins.log'
+                        sh 'ls -la'
                     }
                 }
                 success {

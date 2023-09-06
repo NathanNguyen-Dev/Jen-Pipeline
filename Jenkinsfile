@@ -44,7 +44,7 @@ pipeline {
         }
         stage('Security Scan') {
             steps {
-                echo "Scanning vulnerabilities using Snyk"
+                echo "Scanning vulnerabilities with Snyk"
             }
             post {
 

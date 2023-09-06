@@ -8,9 +8,8 @@ pipeline {
                 echo "Compile and build using Maven"
                 echo "This is build number: ${BUILD_NUMBER}"
                 echo "This is build URL: ${BUILD_URL}"
-                sh 'pwd'
-                sh 'cd ..'
-                sh 'ls -la'
+                sh "cd ~/.jenkins/jobs/${env.JOB_NAME}/builds/${BUILD_NUMBER}/"
+                sh "ls -la"
             }
         }
         stage('Unit Test') {
@@ -19,10 +18,7 @@ pipeline {
                 
             }
             post {
-                always {
-                    sh "cd ~/.jenkins/jobs/${env.JOB_NAME}/builds/${BUILD_NUMBER}/"
-                    sh "ls -la"
-                }
+
                 success {
                     emailext (
                     to:"nathan.nguyennhat@gmail.com",

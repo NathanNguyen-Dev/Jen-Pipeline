@@ -19,8 +19,8 @@ pipeline {
                 success {
                     emailext to:"nathan.nguyennhat@gmail.com",
                     subject:"Success email from Jenkins",
-                    body:"Test is completed"
-                    attachmentsPattern: 'test.log'
+                    body:"Test is completed",
+                    attachmentsPattern: 'generatedFile.txt'
                 }
                 failure {
                     mail to:"nathan.nguyennhat@gmail.com",

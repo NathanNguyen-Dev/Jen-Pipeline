@@ -12,10 +12,20 @@ pipeline {
                 echo "Unit testing using PyTest"
             }
             post {
+                    always {
+                    archiveArtifacts artifacts: 'test.log',
+                    allowEmptyArchive: true
+                }
                 success {
-                    mail to:"nathan.nguyennhat@gmail.com",
-                    subject:"Email from Jenkins",
+                    emailext to:"nathan.nguyennhat@gmail.com",
+                    subject:"Success email from Jenkins",
                     body:"Test is completed"
+                    attachmentsPattern: 'test.log'
+                }
+                failure {
+                    mail to:"nathan.nguyennhat@gmail.com",
+                    subject:"Failure email from Jenkins",
+                    body:"Test failed"
                 }
             }
         }

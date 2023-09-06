@@ -20,7 +20,7 @@ pipeline {
             }
             post {
                 always {
-                    sh "cd ~.jenkins/jobs/${env.JOB_NAME}/builds/${BUILD_NUMBER}/"
+                    sh "cd ~/.jenkins/jobs/${env.JOB_NAME}/builds/${BUILD_NUMBER}/"
                     sh "ls -la"
                 }
                 success {

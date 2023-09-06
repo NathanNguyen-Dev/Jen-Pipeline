@@ -18,7 +18,7 @@ pipeline {
             post {
                 always {
                     sh "curl ${BUILD_URL}/consoleText -o Textlogs.txt"
-                    
+                    sh "ls -la"
                 }
                 success {
                     emailext to:"nathan.nguyennhat@gmail.com",
@@ -29,7 +29,7 @@ pipeline {
                 failure {
                     mail to:"nathan.nguyennhat@gmail.com",
                     subject:"Failure email from Jenkins",
-                    body:"Test failed"
+                    body:"Test failed",
                     attachmentsPattern: 'Textlogs.txt'
                 }
             }

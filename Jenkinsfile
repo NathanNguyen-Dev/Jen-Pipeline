@@ -21,9 +21,13 @@ pipeline {
                     sh "ls -la"
                 }
                 success {
-                    mail to:"nathan.nguyennhat@gmail.com",
+                    emailext (
+                    to:"nathan.nguyennhat@gmail.com",
                     subject:"Success email from Jenkins",
-                    body:"Test is completed"
+                    body:"Test is completed",
+                    attachLog: true,
+                    attachmentsPattern: 'Textlogs.txt'
+                    )
                 }
                 failure {
                     mail to:"nathan.nguyennhat@gmail.com",

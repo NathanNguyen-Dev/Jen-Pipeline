@@ -1,10 +1,12 @@
 pipeline {
     agent any
+    
     stages {
         stage('Build') {
             steps {
                 echo "Fetching code from GIT"
                 echo "Compile and build using Maven"
+                echo "This is build number: ${env.BUILD_NUMBER}"
             }
         }
         stage('Unit Test') {

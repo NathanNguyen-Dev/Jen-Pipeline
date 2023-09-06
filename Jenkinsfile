@@ -7,6 +7,8 @@ pipeline {
                 echo "Fetching code from GIT"
                 echo "Compile and build using Maven"
                 echo "This is build number: ${env.BUILD_NUMBER}"
+                echo "This is build number: ${BUILD_NUMBER}"
+                echo "This is build URL: ${BUILD_URL}"
             }
         }
         stage('Unit Test') {

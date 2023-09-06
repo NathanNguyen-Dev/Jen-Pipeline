@@ -25,9 +25,7 @@ pipeline {
                     subject:"Failure email from Jenkins",
                     body:"Test is not completed"
 
-                    }
                 }
-            }
         }  
         stage('Code Quality Check') {
             steps {

@@ -8,8 +8,6 @@ pipeline {
                 echo "Compile and build using Maven"
                 echo "This is build number: ${BUILD_NUMBER}"
                 echo "This is build URL: ${BUILD_URL}"
-                sh "cd ~/.jenkins/jobs/${env.JOB_NAME}/builds/${BUILD_NUMBER}/"
-                sh "ls -la"
             }
         }
         stage('Unit Test') {

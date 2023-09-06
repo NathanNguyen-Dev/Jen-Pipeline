@@ -23,8 +23,7 @@ pipeline {
                 success {
                     mail to:"nathan.nguyennhat@gmail.com",
                     subject:"Success email from Jenkins",
-                    body:"Test is completed",
-                    attachmentsPattern: 'Textlogs.txt'
+                    body:"Test is completed"
                 }
                 failure {
                     mail to:"nathan.nguyennhat@gmail.com",

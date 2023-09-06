@@ -13,35 +13,18 @@ pipeline {
             }
             post {
                 success {
-                    script {
-                        archiveArtifacts artifacts: '**/test.log', allowEmptyArchive: true
-                        
-                        // Send success email
-                        emailext (
-                            to: 'nathan.nguyennhat@gmail.com',
-                            subject: "Jenkins Test Stage: SUCCESS",
-                            body: """\
-                                The Test stage has completed successfully.
-                                Please find the logs attached.
-                            """,
-                            attachmentsPattern: '**/test.log'
-                        )
+                    // Send success email
+                    mail to:"nathan.nguyennhat@gmail.com",
+                    subject:"Success email from Jenkins",
+                    body:"Test is completed"
                     }
                 }
                 failure {
-                    script {
-                        archiveArtifacts artifacts: '**/test.log', allowEmptyArchive: true
-                        
-                        // Send failure email
-                        emailext (
-                            to: 'nathan.nguyennhat@gmail.com',
-                            subject: "Jenkins Test Stage: FAILURE",
-                            body: """\
-                                The Test stage has failed.
-                                Please find the logs attached.
-                            """,
-                            attachmentsPattern: '**/test.log'
-                        )
+                    // Send failure email
+                    mail to:"nathan.nguyennhat@gmail.com",
+                    subject:"Failure email from Jenkins",
+                    body:"Test is not completed"
+
                     }
                 }
             }

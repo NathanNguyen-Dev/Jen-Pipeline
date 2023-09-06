@@ -8,6 +8,9 @@ pipeline {
                 echo "Compile and build using Maven"
                 echo "This is build number: ${BUILD_NUMBER}"
                 echo "This is build URL: ${BUILD_URL}"
+                sh 'pwd'
+                sh 'cd ..'
+                sh 'ls -la'
             }
         }
         stage('Unit Test') {

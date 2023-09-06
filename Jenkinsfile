@@ -13,8 +13,10 @@ pipeline {
             }
             post {
                     always {
-                    archiveArtifacts artifacts: 'test.log',
-                    allowEmptyArchive: true
+                        script {
+                        // Check the Jenkins log if needed
+                        sh 'tail -n 100 /var/log/jenkins/jenkins.log'
+                    }
                 }
                 success {
                     emailext to:"nathan.nguyennhat@gmail.com",

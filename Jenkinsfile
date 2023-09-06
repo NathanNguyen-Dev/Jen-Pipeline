@@ -6,7 +6,6 @@ pipeline {
             steps {
                 echo "Fetching code from GIT"
                 echo "Compile and build using Maven"
-                echo "This is build number: ${env.BUILD_NUMBER}"
                 echo "This is build number: ${BUILD_NUMBER}"
                 echo "This is build URL: ${BUILD_URL}"
             }
@@ -14,24 +13,26 @@ pipeline {
         stage('Unit Test') {
             steps {
                 echo "Unit testing using PyTest"
+                
             }
             post {
                     always {
                         script {
-                        // Check the Jenkins log if needed
-                        sh 'ls -la'
+                        // read and save the output text
+                         sh "curl ${BUILD_URL}/consoleText -o Textlogs.txt"
                     }
                 }
                 success {
                     emailext to:"nathan.nguyennhat@gmail.com",
                     subject:"Success email from Jenkins",
                     body:"Test is completed",
-                    attachmentsPattern: 'generatedFile.txt'
+                    attachmentsPattern: 'Textlogs.txt'
                 }
                 failure {
                     mail to:"nathan.nguyennhat@gmail.com",
                     subject:"Failure email from Jenkins",
                     body:"Test failed"
+                    attachmentsPattern: 'Textlogs.txt'
                 }
             }
         }

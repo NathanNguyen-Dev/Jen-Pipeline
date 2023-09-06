@@ -28,10 +28,12 @@ pipeline {
                     )
                 }
                 failure {
-                    mail to:"nathan.nguyennhat@gmail.com",
+                    emailext(
+                    to:"nathan.nguyennhat@gmail.com",
                     subject:"Failure Unit Test from Jenkins",
                     body:"Test failed",
                     attachLog: true
+                    )
                 }
             }
         }
@@ -55,10 +57,12 @@ pipeline {
                     )
                 }
                 failure {
-                    mail to:"nathan.nguyennhat@gmail.com",
+                    emailext(
+                    to:"nathan.nguyennhat@gmail.com",
                     subject:"Failure Security Test from Jenkins",
                     body:"Security Test failed",
                     attachLog: true
+                    )
                 }
             }
         }
